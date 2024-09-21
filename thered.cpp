@@ -4,29 +4,37 @@
 
 using namespace std;
 
-// Function to print the current time with a custom message
-void printTimeWithMessage(const string &customMessage)
-{
-    // Get the current time
-    time_t tt;
-    tm *ti;
-    time(&tt);
-    ti = localtime(&tt);
+// Class that encapsulates the time printing functionality
+class MessageWithTime {
+public:
+    // Constructor (optional, depending on usage)
+    MessageWithTime() {}
 
-    // Get the formatted time
-    string formattedTime = asctime(ti);
+    // Method to print the current time with a custom message
+    void printTimeWithMessage(const string& customMessage) {
+        // Get the current time
+        time_t tt;
+        tm *ti;
+        time(&tt);
+        ti = localtime(&tt);
 
-    // Remove the newline at the end of the formatted time
-    formattedTime.pop_back(); // Removes the last character (newline)
+        // Get the formatted time
+        string formattedTime = asctime(ti);
+        
+        // Remove the newline at the end of the formatted time
+        formattedTime.pop_back();  // Removes the last character (newline)
 
-    // Print the custom message with time prefixed
-    cout << "[" << formattedTime << "] " << customMessage << endl;
-}
+        // Print the custom message with time prefixed
+        cout << "[" << formattedTime << "] " << customMessage << endl;
+    }
+};
 
-int main()
-{
-    // Call the function and pass the custom message
-    printTimeWithMessage("Hello World!");
+int main() {
+    // Create an instance of the MessageWithTime class
+    MessageWithTime messagePrinter;
+
+    // Call the method and pass the custom message
+    messagePrinter.printTimeWithMessage("Hello World!");
 
     return 0;
 }
