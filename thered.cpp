@@ -5,10 +5,21 @@
 using namespace std;
 
 // Class that encapsulates the time printing functionality
-class MessageWithTime {
+class Players {
 public:
     // Constructor (optional, depending on usage)
-    MessageWithTime() {}
+    Players() 
+    {
+        std::cout << "the default constructor was called." << std::endl;
+    }
+
+    Players(int i)
+    {
+        std::cout << "the int constructor was called, the int is: " << i << std::endl;
+        number = i;
+
+    }
+
 
     // Method to print the current time with a custom message
     void printTimeWithMessage(const string& customMessage) {
@@ -27,14 +38,16 @@ public:
         // Print the custom message with time prefixed
         cout << "[" << formattedTime << "] " << customMessage << endl;
     }
+
+    int number;
+
 };
 
 int main() {
-    // Create an instance of the MessageWithTime class
-    MessageWithTime messagePrinter;
-
+    // Create an instance of the Players class
+    Players My(66);
     // Call the method and pass the custom message
-    messagePrinter.printTimeWithMessage("Hello World!");
+    MyClass.printTimeWithMessage("Hello World!");
 
     return 0;
 }
